@@ -1,0 +1,9 @@
+<div class="background">
+    <div class="popup-body">
+        <p>{{message}}</p>
+        <div class="buttons-container">
+            <button (click)="onCancel()" *ngIf="buttonNeg">{{buttonNeg}}</button>
+            <button (click)="onConfirm()">{{buttonPos}}</button>
+        </div>
+    </div>
+</div>

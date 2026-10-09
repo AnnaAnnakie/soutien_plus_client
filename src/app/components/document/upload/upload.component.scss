@@ -1,0 +1,258 @@
+.container {
+  display: flex;
+  margin: 0;
+  max-width: 100%;
+  padding: 0;
+}
+
+.alert {
+  color: red;
+  font-weight: bold;
+}
+
+.groupe {
+  border-radius: 0px;
+  width: 25%;
+  height: 900px;
+  overflow-y: auto;
+}
+
+body {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #f9f9f9;
+  width: 100%;
+  flex-direction: row;
+
+  .upload, .form {
+    width: 48%;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+.upload {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+
+//Dépot de fichier
+.dotted {
+  display: flex;
+  flex-direction: column; /* Pour que le texte et l'image soient alignés en colonne */
+  justify-content: center; /* Centre verticalement */
+  align-items: center; /* Centre horizontalement */
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+
+.card svg.material-icons path {
+  fill: #888;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.card {
+  border-radius: 4px;
+  border: 2px solid #eee;
+  background-color: #fafafa;
+  height: 100px;
+  width: 330px;
+  margin: 0 8px 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}
+
+.card-container .card:not(:last-child) {
+  margin-right: 0;
+}
+
+.card.card-small {
+  height: 16px;
+  width: 168px;
+}
+
+.card-container .card:not(.highlight-card) {
+  cursor: pointer;
+}
+
+.card-container .card:not(.highlight-card):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(black, 0.35);
+}
+
+.card-container .card:not(.highlight-card):hover .material-icons path {
+  fill: rgb(105, 103, 103);
+}
+
+.card.highlight-card {
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+  border: none;
+  width: auto;
+  min-width: 30%;
+  position: relative;
+}
+
+.card.card.highlight-card span {
+  height: 150px;
+  width: 150px;
+  margin-left: 60px;
+}
+
+.content {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.icon {
+  height: 50px;
+  width: 50px;
+}
+
+// FORMULAIRE
+.form {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2em;
+}
+
+input {
+  &:not([type="checkbox"]) {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+select {
+  margin-bottom: 15px;
+}
+
+.checkboxes {
+  margin-bottom: 15px;
+}
+
+.close-btn {
+  position: absolute;
+  top: -42px;
+  right: -44px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 47px;
+  height: 38px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background-color: darkred;
+}
+
+
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #006D77;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  margin: 1em;;
+
+  &:hover {
+    background-color: #E29578;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+}
+
+.recap-container {
+  background: #f8f9fa;
+  border-left: 5px solid #007bff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.recap-container h3 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+.recap-item {
+  margin: 8px 0;
+  padding: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+@media (orientation: portrait) {
+  body {
+    flex-direction: column;
+    gap: 10px;
+
+    .upload, .form {
+      width: 100%;
+
+      form {
+        width: 80vw;
+      }
+    }
+  }
+}

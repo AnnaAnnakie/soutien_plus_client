@@ -1,0 +1,166 @@
+.container {
+    display: flex;
+    margin: 0px;
+    max-width: 100%;
+    padding: 0px;
+  }
+  
+  .groupe {
+    border-radius: 0px;
+    width: 25%;
+    height: 93vh;
+    overflow-y: auto;
+  }
+
+  body {
+    padding: 20px;
+    background-color: #f9f9f9;
+    width: 100%;
+  }
+
+  .membres {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      /*align-items: end;*/
+  }
+  
+.grid-lignes {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    gap: 15px;
+}
+
+.colonnes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 10px;
+}
+
+.grid-infos {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+}
+
+.grid-tuteur {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+}
+
+#ppimg {
+    width: 150px; /* Ajuste la taille à celle que tu veux */
+    height: 150px; /* Assure-toi que la largeur et la hauteur sont égales pour que l'image soit bien ronde */
+    border-radius: 50%; /* Applique l'arrondi complet à l'image */
+    object-fit: cover; /* Assure que l'image couvre bien l'espace sans déformation */
+    border: 1px solid black; /* Contour noir de 5px */
+}
+
+/*Arrondir bouton carnet, couleur E29578*/
+#carnetsante {
+    background-color: #E29578;
+    color: white; /* Texte en blanc pour le contraste */
+    border: none; /* Supprime la bordure */
+    padding: 10px 20px; /* Espace intérieur */
+    border-radius: 10px; /* Coins arrondis */
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#carnetsante:hover {
+    background-color: #d07f63; /* Légèrement plus foncé au survol */
+}
+
+.c12 {
+    display: flex;
+    justify-content: flex-end; /* Pousse le bouton à droite */
+    padding-right: 10px; /* Ajoute une marge de 10px à droite */
+}
+
+/*Arrondir bouton modifier, couleur 83C5BE*/
+#modifier {
+    background-color: #83C5BE;
+    color: white; /* Texte en blanc pour le contraste */
+    border: none;
+    padding: 8px 16px; /* Ajustement de l’espace intérieur */
+    border-radius: 10px; /* Arrondi plus élégant */
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block; /* Empêche qu'il prenne toute la largeur */
+    height: 60px; /* Ajuste la hauteur en fonction du texte */
+    min-width: 140px; /* Pour éviter qu'il soit trop petit */
+    text-align: center; /* Centre le texte */
+    line-height: 1.5; /* Ajuste la hauteur de ligne pour un rendu équilibré */
+}
+
+#modifier:hover {
+    background-color: #6fa9a3; /* Légèrement plus foncé au survol */
+}
+
+  
+/* nom prenom gras + gros*/
+/* commentaire zone de texte encadrée*/
+
+#tuteur {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#carreblanc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    opacity: 0.8;
+    cursor: pointer; // Indique que c’est cliquable
+}
+
+.senior_name {
+    font-weight: bold;
+    font-size: 28px;
+    
+}
+
+#name_tut {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.c22 span {
+    display: block; /* Permet au texte de respecter la largeur du parent */
+    word-wrap: break-word; /* Casse les mots si besoin */
+    overflow-wrap: break-word;
+    white-space: pre-wrap; /* Garde les sauts de ligne */
+ }
+
+ .c22 {
+    margin-bottom: 30px; /* espace entre la section des commentaires et celle du bouton */
+    border: 1px solid #000; /* cadre noir autour de la section */
+    padding: 10px; /* espace intérieur pour que le texte ne touche pas le bord */
+    border-radius: 5px; /* coins arrondis (facultatif) */
+}
+
+.grid-tuteur {
+    padding-top: 10px; /* Un peu d'espace au-dessus de la ligne */
+}
+
+@media (max-width: 768px) {
+    .grid-lignes, .grid-infos, .grid-tuteur, .colonnes {
+        grid-template-columns: 1fr; /* 1 colonne pour toutes */
+    }
+}
+
+hr {
+    border: none;
+    border-top: 3px solid ; 
+}

@@ -1,0 +1,35 @@
+<div id="main">
+  <div id="title">
+    <h1>Facilitez la gestion de vos proches âgés en connectant famille et professionnels de santé, avec SOUTIEN+</h1>
+    <a class="EnSavoirPlus" (click)="scrollToSection('presentation')">En savoir plus ↓</a>
+  </div>
+
+  <div id="redirections" *ngIf="!isConnected">
+    <h1>Soutien +</h1>
+    <p>Connectez-vous ou inscrivez-vous si cela n'est pas déjà fait pour accéder à la gestion de vos groupes.</p>
+    <input routerLink="/connexion" type="button" class="button red" value="Se connecter">
+    <input routerLink="/inscription" type="button" class="button green" value=" Créer un compte">
+  </div>
+  <img src="assets/vitrine/seniors.png" alt="heroImage" id="hero">
+</div>
+<div id="presentation">
+  <!-- TODO: Remplir avec du contenu vitrine, screens de nos fonctionnalités-->
+  <h1>C'est quoi Soutien + ?</h1>
+  <p>Un outil qui permet ...</p>
+  <div class="grid">
+    <div class="card"><img src="assets/vitrine/kanban.png" alt="featureKanban"><span>D'organiser facilement vos tâches</span></div>
+    <div class="card"><img src="assets/vitrine/documents.png" alt="featureDocument"><span>De retrouver efficacement tout vos documents</span></div>
+    <div class="card"><img src="assets/vitrine/membres.png" alt="featureMembre"><span>De collaborer avec votre famille</span></div>
+  </div>
+  <hr>
+  <h1>Et qui sont les Solid'Aidants ?</h1>
+  <div class="memberCard">
+    <div class="member"><img src="assets/team/fantine.png" alt="Fantine"><span>Fantine</span></div>
+    <div class="member"><img src="assets/team/xavier.png" alt="Xavier"><span>Xavier</span></div>
+    <div class="member"><img src="assets/team/cesar.png" alt="César"><span>César</span></div>
+    <div class="member"><img src="assets/team/benjamin.png" alt="Benjamin"><span>Benjamin</span></div>
+    <div class="member"><img src="assets/team/arthur.png" alt="Arthur"><span>Arthur</span></div>
+    <div class="member"><img src="assets/team/timeo.png" alt="Timéo"><span>Timéo</span></div>
+    <div class="member"><img src="assets/team/anais.png" alt="Anaïs"><span>Anaïs</span></div>
+  </div>
+</div>

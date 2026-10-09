@@ -1,0 +1,22 @@
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+
+<menu class="document-options" [style.position]="'absolute'" [style.top.px]="menuPosition['top']"
+      [style.left.px]="menuPosition['left']">
+  <ul>
+    <li (click)="onClickModifier()">Modifier</li>
+    <li (click)="onClickVersion()">Voir toutes les versions</li>
+    <li (click)="openPopup('Voulez-vous vraiment supprimer le document '+selectedDoc.getName()+
+  ' du groupe '+groupe?.getName()+'?', 'Annuler', 'Supprimer')">Supprimer
+    </li>
+    <li (click)="closeMenu.emit()">Fermer</li>
+  </ul>
+</menu>
+
+<div *ngIf="isPopupOpen">
+  <app-pop-up
+    [message]="message" [buttonNeg]="buttonNeg" [buttonPos]="buttonPos" (confirmDeletion)="delete()"
+    (cancelPopUp)="closePopup()">
+  </app-pop-up>
+</div>

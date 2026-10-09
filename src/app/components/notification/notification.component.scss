@@ -1,0 +1,103 @@
+/* Conteneur principal avec scroll si nécessaire */
+.notification-container-wrapper {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  max-height: 400px; /* Hauteur max avant scroll */
+  max-width: 580px;
+  overflow-y: auto; /* Activation du scroll */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  background: #f9f9f9;
+  margin: 20px;
+  z-index: 1001;
+
+}
+
+img{
+  height: 50px;
+}
+
+/* Chaque notification */
+.notification-container {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Notification individuelle avec effet de séparation */
+.notification {
+  margin-bottom: 15px;
+  padding: 15px;
+  border-left: 5px solid #4CAF50; /* Couleur du séparateur */
+  background-color: #ffffff;
+  font-size: 16px;
+}
+
+/* Texte général */
+.notification p {
+  line-height: 1.6;
+  font-size: 14px;
+  color: #555555;
+  margin-bottom: 10px;
+}
+
+/* Mise en avant des éléments clés */
+.notification strong {
+  font-weight: bold;
+}
+
+.notification .author-name {
+  color: #3b8ec0;
+}
+
+.notification .action {
+  color: #e91e63;
+}
+
+.notification .document-name {
+  color: #4CAF50;
+}
+
+.notification .group-name {
+  color: #ff9800;
+}
+
+/* Effet au survol */
+.notification:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.close-button {
+  position: absolute;
+  top: 0px;
+  right: 2px;
+  background: transparent;
+  border: none;
+  font-size: 50px;
+  font-weight: bold;
+  color: red;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.close-button:hover {
+  color: darkred;
+  transform: scale(1.2);
+}

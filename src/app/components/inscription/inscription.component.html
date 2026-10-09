@@ -1,0 +1,36 @@
+<div class="page">
+    <div class="container">
+        <div class="left">
+            <img src="assets/navbar/logo.png" alt="logo">
+            <h2>Inscription</h2>
+            <h3>Saisissez vos informations personnelles</h3>
+        </div>
+        <div class="right">
+          <form [formGroup]="inscriptionForm" (ngSubmit)="onSubmit()">
+            <input type="text" id="nom" formControlName="nom" placeholder="Nom" required>
+            <input type="text" id="prenom" formControlName="prenom" placeholder="Prénom" required>
+            <input type="email" id="email" formControlName="email" placeholder="Adresse e-mail" required>
+            <div *ngIf="inscriptionForm.get('email')?.touched && inscriptionForm.get('email')?.errors?.['email']">
+              <p>Vous devez entrer une adresse mail valide</p>
+            </div>
+            <input type="password" id="password" formControlName="password" placeholder="Mot de passe" required>
+            <div *ngIf="inscriptionForm.get('password')?.touched && inscriptionForm.get('password')?.errors">
+              <p *ngIf="inscriptionForm.get('password')?.errors?.['minlength']">Le mot de passe doit contenir au moins 6 caractères.</p>
+              <p *ngIf="inscriptionForm.get('password')?.errors?.['noUpperCase']">Le mot de passe doit contenir au moins une majuscule.</p>
+              <p *ngIf="inscriptionForm.get('password')?.errors?.['noSpecialChar']">Le mot de passe doit contenir au moins un caractère spécial.</p>
+            </div>
+            <input type="password" id="confirm_password" formControlName="confirmPassword" placeholder="Confirmer le mot de passe" required>
+            <div *ngIf="inscriptionForm.get('confirmPassword')?.touched && inscriptionForm.hasError('passwordsMismatch')">
+              <p>Les mots de passe ne correspondent pas.</p>
+            </div>
+            <div class="condition">
+              <input type="checkbox" id="accept_conditions" formControlName="checkbox"/>
+              <label for="accept_conditions">J’accepte les <a href="#">conditions d’utilisation</a></label>
+            </div>
+            <div class="bouton">
+              <button type="submit" [disabled]="!isFieldsValid()" >S'inscrire</button>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>

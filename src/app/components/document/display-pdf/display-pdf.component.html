@@ -1,0 +1,24 @@
+<div *ngIf="displayIn" class="display-in">
+  <iframe *ngIf="pdfUrl; else noPdf" [src]="pdfUrl" width="100%" height="600px"></iframe>
+
+  <ng-template #noPdf>
+    <p>Document vide ou corrompu</p>
+  </ng-template>
+</div>
+
+<div *ngIf="!displayIn" class="display-out">
+  <div *ngIf="document" class="pop-up">
+    <a (click)="onCancel()">X</a>
+    <h2>{{ title }}{{ document.getName() }}</h2>
+    <p>Propriétaire: {{ currentUser?.getFullName() }}</p>
+    <p>Type de document : {{ document.getType() }}</p>
+    <p>Description : {{ document.getDescription() }}</p>
+    <p>Dernière modification: {{ document.getDateCreation() }}</p>
+
+    <iframe *ngIf="pdfUrl; else noPdf" [src]="pdfUrl" width="100%" height="600px"></iframe>
+    <button (click)="onCancel()">Fermer</button>
+  </div>
+  <ng-template #noPdf>
+    <p>Document vide ou corrompu</p>
+  </ng-template>
+</div>

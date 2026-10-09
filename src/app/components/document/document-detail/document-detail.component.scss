@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  margin: 0;
+  max-width: 100%;
+  padding: 0;
+}
+
+.groupe {
+  border-radius: 0;
+  width: 25%;
+  height: 93vh;
+  overflow-y: auto;
+}
+
+#inline {
+  padding: 2vh 2vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.document-container{
+  width: 100%;
+}
+button {
+  border: none;
+  background: #006D77;
+  border-radius: 10px;
+  padding: 0 1em;
+  color: white;
+}

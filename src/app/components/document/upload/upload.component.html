@@ -1,0 +1,106 @@
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+
+<div class="container">
+  <div class="groupe">
+    <app-aside-bar></app-aside-bar>
+  </div>
+
+  <body>
+  <div class="upload">
+    <h2>Déposer un document</h2>
+    <div class="content" role="main">
+
+      <div class="card card-light">
+        <div class="dotted" appUpload (onFileDropped)="onFileDropped($event)">
+          <button *ngIf="((newDoc || originalDoc) && isNewDoc) || currentDoc" class="close-btn"
+                  (click)="deleteCurrentFile()">✖
+          </button>
+
+          <p *ngIf="originalDoc || newDoc">
+            <img src="../../../../assets/document/file_pdf.png" alt="pdf-logo" class="icon">
+            {{ (newDoc ?? currentDoc ?? originalDoc)?.getName() }}
+          </p>
+          <p *ngIf="!newDoc && !originalDoc">Déposer un fichier ici</p>
+        </div>
+      </div>
+      <button (click)="openFileSelector()">
+        {{ buttonImport }}
+      </button>
+      <input type="file" #fileInput style="display: none;" accept="application/pdf"
+             (change)="onFileSelected($event)"/>
+
+      <div>
+        <div>
+          <button *ngIf="originalDoc" (click)="openDisplay(originalDoc, 'Document Original: ')">
+            <img src="../../../../assets/document/icon_oeil.png" alt="oeil" class="icon">Voir Document Original
+          </button>
+        </div>
+
+        <div>
+          <button *ngIf="newDoc || currentDoc" (click)="openDisplay(newDoc ?? currentDoc, 'Nouveau Document: ')">
+            <img src="../../../../assets/document/icon_oeil.png" alt="oeil" class="icon"> Voir nouveau document
+          </button>
+        </div>
+
+        <div *ngIf="displayedDocument">
+          <app-display-pdf [document]="displayedDocument" [title]="displayedTitle" (close)="closeDisplay()">
+          </app-display-pdf>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="form">
+    <h2>{{ title }}</h2>
+    <p *ngIf="newDoc == undefined && originalDoc==undefined" class="alert">
+      Veuillez importer un document avant de remplir les informations.
+    </p>
+    <form [formGroup]="createDocumentForm" (ngSubmit)="onSubmit()">
+      <h3>Informations du document</h3>
+      <p>Nom du document<span class="alert">*</span></p>
+      <input type="text" id="nom_groupe" formControlName="nom" placeholder="Nom du document" required>
+
+      <p>Description du document<span class="alert">*</span></p>
+      <input type="text" id="desc_document" formControlName="description" placeholder="Description du document"
+             required>
+
+
+      <!-- SELECTEUR TYPE -->
+      <p>Type de document</p>
+      <select name="type" id="type-select" (change)="onSelectType($event)">
+        <option value="default">Aucun type</option>
+        <option *ngFor="let type of documentTypes" [value]="type" [selected]="originalDoc?.getType() === type">
+          <input type="checkbox" id="checkbox" name="m"/>
+          {{ type }}
+        </option>
+      </select>
+
+
+      <button type="button" [disabled]="newDoc == undefined && originalDoc==undefined" (click)="openAssignementForm()">
+        Assigner le document
+      </button>
+
+        <app-assignement-form *ngIf="isAformOpen" [originalDoc]="originalDoc" [membersGroupe]="membersGroupe"
+          (assignmentCreated)="handleAssignmentCreated($event)" (close)="closeAssignementForm()"></app-assignement-form>
+
+          <div *ngIf="newAssignement" class="recap-container">
+            <h3>📌 Récapitulatif de l'assignation</h3>
+            <div class="recap-item"><strong>👤 Destinataire :</strong> {{ userAssigned?.getFullName() }}</div>
+            <div class="recap-item"><strong>✉️ Message :</strong> {{ newAssignement.getMessage() }}</div>
+            <div class="recap-item"><strong>📅 Date limite :</strong> {{ newAssignement.getDateLimit() }}</div>
+            <div class="recap-item"><strong>✅ Action :</strong> {{ newAssignement.getAction() }}</div>
+          </div>
+
+        <div class="bouton">
+          <button type="submit" [disabled]="!isFieldsValid() && !buttonDisable">{{buttonSubmit}}</button>
+        </div>
+
+    </form>
+
+  </div>
+
+  </body>

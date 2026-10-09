@@ -1,0 +1,47 @@
+<div class="parametre">
+	<div class="grid-parametre-container">
+		<div class="colonne1">
+			<div class="grid-colonne1">
+				<img id="ppimg" src="../../assets/parametre/imgpp.png" alt="copy">
+				<div class = "text-infos">
+
+          <div class="nom-prenom">
+            <span class="nom">{{nom}} </span>
+            <span class="prenom"> {{prenom}}</span>
+          </div>
+            <span class="email" > {{email}}</span>
+            <span class="numtel"> {{numtel}}</span>
+            <span class="role"> {{role}}</span>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="colonne3">
+      <button (click)="disconnection()" class="deconnexion">Déconnexion</button>
+      <button (click)="togglePopUp()" class="modifier">
+        Modifier
+      </button>
+    </div>
+
+    <!-- Pop-up affichée uniquement si isEditable est vrai -->
+    <div *ngIf="isEditable" class="popup-overlay">
+      <div class="popup-content">
+
+        <h3>Modifier mes informations</h3>
+
+        <input type="text" [(ngModel)]="prenom" placeholder="Prénom">
+        <input type="text" [(ngModel)]="nom" placeholder="Nom">
+        <input type="email" [(ngModel)]="email" placeholder="Email">
+        <input type="text" [(ngModel)]="numtel" placeholder="Numéro de téléphone">
+
+        <div class="popup-buttons">
+          <button class="save" (click)="saveSettings()">Sauvegarder</button>
+          <button class="cancel" (click)="togglePopUp()">Annuler</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

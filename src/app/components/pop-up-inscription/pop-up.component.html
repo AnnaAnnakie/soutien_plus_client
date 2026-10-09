@@ -1,0 +1,33 @@
+
+<div *ngIf="isEmail" class="pop-up inscription">
+  <div class="message">Vérifiez votre e-mail</div>
+  <h1>
+    Veuillez vérifier votre adresse électronique en
+    cliquant sur le lien envoyé à {{ email }}</h1>
+
+  <button class="button"> Renvoyer l'e-mail </button>
+</div>
+
+
+
+<div *ngIf="isGroupes" class="pop-up groupes">
+
+
+  <div class="groupes-container">
+    <div class="groupes-left">
+      <button>Créer un groupe</button>
+    </div>
+
+    <div class="groupes-right">
+    <h2>Rejoindre un groupe</h2>
+    <input type="text">
+    <button class="button"> Rejoindre </button>
+
+  </div>
+
+
+  </div>
+
+
+</div>
+

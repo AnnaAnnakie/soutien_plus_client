@@ -1,0 +1,329 @@
+.container {
+    display: flex;
+    margin: 0px;
+    max-width: 100%;
+    padding: 0px;
+  }
+  
+  .groupe {
+    border-radius: 0px;
+    width: 25%;
+    height: 93vh;
+    overflow-y: auto;
+  }
+
+  body {
+    padding: 20px;
+    background-color: #f9f9f9;
+    width: 100%;
+  }
+
+  .membres {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+  }
+  
+.table-container {
+  width: 100%;
+  border-radius: 20px; 
+  border-top-right-radius: 0px;
+  overflow: hidden; 
+  border: 2px solid #000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+/* Table */
+.members-table {
+  width: 100%;
+  border-collapse: collapse; /* Évite les espaces entre les bordures des cellules */
+}
+
+.members-table th,
+.members-table td {
+  padding: 10px;
+  padding-left: 40px;
+  text-align: left;
+  border-bottom: 2px solid #000; /* Bordure entre les lignes */
+  border-right: 2px solid #000; /* Bordure autour des cellules */
+  font-size: 1.5vw;
+}
+
+.members-table th {
+  background-color: #83C5BE; /* Couleur d'en-tête */
+  font-weight: bold;
+  font-size: 2vw;
+}
+
+.members-table tr:last-child td {
+  border-bottom: none; /* Supprime la dernière bordure horizontale */
+}
+
+.members-table tbody tr td:last-child, 
+.members-table thead tr th:last-child{
+  padding: 10px;
+  text-align: center;
+  border-right: none;
+}
+
+
+
+/* Actions (trois petits points) */
+.dots {
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  display: inline-block;
+  user-select: none;
+}
+
+/* Actions container */
+.actions {
+  position: relative;
+  display: inline-block;
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  margin-right: 8vw;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  overflow: hidden; /* Évite que le contenu dépasse des coins arrondis */
+}
+
+.popup ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.popup li {
+  padding: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.popup li:last-child {
+  border-bottom: none; /* Supprime la bordure du dernier élément */
+}
+
+.popup li:hover {
+  background-color: #f0f0f0;
+}
+
+img {
+  height: 2.5vw;
+  object-fit: cover;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+p {
+  margin: 0px;
+}
+
+.add-member {
+  display: flex;
+  margin-top: 20px;
+  background-color: #E29578;
+  font-size: 1.5vw;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 10px 30px;
+  border: 2px solid #000;
+  border-bottom: 0px;
+  width: min-content;
+  align-items: center; 
+  justify-content: end; 
+}
+
+#plus-image {
+  height: 2vw;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* Overlay pour la popup */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Contenu de la popup */
+.popup-content {
+  width: 60%;
+  max-width: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* En-tête de la popup */
+.popup-header {
+  display: flex;
+  background: white;
+  justify-content: space-between;
+  padding: 20px 30px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  align-items: center;
+}
+
+.popup-header h3 {
+  margin: 0;
+  font-size: 2vw;
+}
+
+.popup-header .close-button {
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Corps de la popup */
+.popup-body {
+  display: flex;
+  padding: 40px;
+  justify-content: space-between;
+  gap: 40px;
+  background-color: #C6DDE7;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.left-section, .right-section {
+  flex: 1;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.right-section p {
+  font-size: 1.5vw;
+  margin-bottom: 20px;
+}
+
+.code-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.code-text {
+  font-size: 1.5vw;
+}
+
+.copy-img {
+  width: auto; /* Largeur de l'image */
+  height: 30px; /* Hauteur de l'image */
+  cursor: pointer; /* Change le curseur au survol */
+  transition: transform 0.2s ease; /* Ajoute un effet d'animation au survol */
+}
+
+.copy-img:hover {
+  transform: scale(1.1); /* Agrandit légèrement l'icône au survol */
+}
+
+.code {
+  border: 2px solid #424242;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: monospace;
+  text-align: center;
+  font-size: 1.2vw;
+}
+
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 30px;
+  background: #E29578;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background: #d97955;
+}
+
+#croix-image {
+  height: 1.5vw;
+}
+
+.div-gauche {
+  display: flex;
+  justify-content: end;
+}
+
+@media (max-width: 600px) {
+  .groupe {
+    display: none;
+  }
+}
+
+@media (max-width: 900px){
+  .popup-body{
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 950px) {
+
+  .popup-content {
+    width: 80%;
+  }
+  .popup-header h3 {
+    margin: 0;
+    font-size: 25px;
+  }
+  .code-text{
+    font-size: 20px;
+  }
+  .code {
+    font-size: 18px;
+  }
+
+  .right-section p {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 550px){
+  .code {
+    font-size: 3vw;
+  }
+}

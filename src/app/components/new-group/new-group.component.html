@@ -1,0 +1,29 @@
+<body>
+<div class="form">
+  <h2>Créer un nouveau groupe</h2>
+  <form [formGroup]="createGroupForm" (ngSubmit)="onSubmit()" >
+    <h3>Informations sur le groupe</h3>
+    <p>Nom du groupe</p>
+    <input type="text" id="nom_groupe" formControlName="nom_groupe" placeholder="Nom du groupe" required>
+
+    <p>Description du groupe</p>
+    <input type="text" id="desc_groupe" formControlName="desc_groupe" placeholder="Description du groupe" required>
+    <h3>Informations de la personne encadrée</h3>
+    <p>Nom</p>
+    <input type="text" id="nom" formControlName="nom" placeholder="Nom" required>
+    <p>Prénom</p>
+    <input type="text" id="prenom" formControlName="prenom" placeholder="Prénom" required>
+    <p>Date de naissance</p>
+    <input type="date" id="dateNaiss" formControlName="dateNaiss" placeholder="jj/mm/aaaa" required>
+
+    <p>Numero de sécurité sociale</p>
+    <input type="text" id="numSecu" formControlName="numSecu" placeholder="XXXXXXXXXXXXXXX" required>
+    <div>
+      <p>Vous devez entrer un numéro de sécurité sociale valide</p>
+    </div>
+    <div class="bouton">
+      <button type="submit" [disabled]="!isFieldsValid()" >Créer</button>
+    </div>
+  </form>
+</div>
+</body>

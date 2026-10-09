@@ -1,0 +1,155 @@
+.display-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* Bouton de fermeture */
+.close-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #FF4C4C;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: #FF2A2A;
+}
+
+/* Pop-up */
+.pop-up {
+  position: relative;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 100%;
+
+  max-width: 800px;
+  overflow-y: auto;
+}
+/* Titre */
+.pop-up h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Contenu du formulaire */.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 20px;
+  max-width: 100%;
+}
+
+label {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+select,
+input[type="text"],
+input[type="date"],
+input[type="time"] {
+  width: 100%;
+  padding:10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  color: #444;
+  box-sizing: border-box;
+}
+
+select:focus,
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus {
+  border-color: #0066CC;
+  outline: none;
+}
+
+/* Zone des boutons */
+  .buttons-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  }
+
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;cursor: pointer;
+  width: 48%;
+  display: flex;
+  justify-content: center;align-items: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#annuler_btn {
+  background-color: #FF4C4C;
+  color: white;
+}
+
+#annuler_btn:hover {
+  background-color: #FF2A2A;
+  transform: scale(1.05);
+}
+
+#enregistrer_btn {
+
+  background-color: #0066CC;
+  color: white;
+
+}
+
+#enregistrer_btn:hover {
+
+  background-color: #004B87;
+  transform: scale(1.05);
+}
+
+/* Réactivité mobile */
+@media (max-width: 768px) {
+  .form {
+      padding-left: 10px;
+      max-width: 100%;
+  }
+
+  .buttons-container {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  button {
+      width: 100%;
+  }
+}

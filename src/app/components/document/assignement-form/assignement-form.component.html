@@ -1,0 +1,52 @@
+<div class="display-out">
+
+  <div class="pop-up">
+    <button class="close-btn" (click)="onCancel()">✖</button>
+    <h1>Assigner le document</h1>
+    <form [formGroup]="AssignementForm" (ngSubmit)="onSave()">
+
+      <div class="form">
+        <!-- SELECTEUR ETAT -->
+        <label>Action à réaliser
+          <select name="type" id="type-select" (change)="onSelectEtat($event)">
+            <option value="default">Aucun</option>
+            <option *ngFor="let etat of documentEtats" [value]="etat">
+              <input type="checkbox" id="checkbox" name="m"/>
+              {{ etat }}
+            </option>
+          </select>
+        </label>
+
+        <!-- SELECTEUR ASSIGNATION-->
+        <label>Assigner le document à un membre du groupe
+          <select name="assign" id="assign-select" (change)="onSelectUser($event)">
+            <option value="default">Aucune assignation</option>
+            <option *ngFor="let user of membersGroupe" [value]="user.id">
+              {{ user.name }} {{ user.second_name }}
+            </option>
+          </select>
+          <input type="text" id="assignation-message" formControlName="messageAssignation"
+                 placeholder="Message (facultatif)">
+
+        </label>
+
+        <!-- SELECTEUR DATE AVEC CALENDRIER ET HEURE -->
+        <label>Date limite de réalisation :
+          <input type="date" (change)="onSelectDate($event)">
+        </label>
+
+        <label>Heure :
+          <input type="time" (change)="onSelectTime($event)">
+        </label>
+
+        <p>Date sélectionnée : {{ dateAssignement }}</p>
+
+      </div>
+
+      <div class="buttons-container">
+        <button id="annuler_btn" (click)="onCancel()">Annuler</button>
+        <button id="enregistrer_btn" (click)="onSave()">Enregistrer</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="container">
+  <div [class.hidden]="getTypeError() != '401'">
+    <img src="assets/401.png" alt="401">
+    <p>Oups! Il semblerait que vous n'ayez pas accès à cette page!</p>
+  </div>
+  <div [class.hidden]="getTypeError() != '404'">
+    <img src="assets/404.png" alt="404">
+    <p>Oups! Il semblerait que cette page n'existe pas!</p>
+  </div>
+  <button routerLink="/groupes">
+    Retourner à l'accueil
+  </button>
+</div>

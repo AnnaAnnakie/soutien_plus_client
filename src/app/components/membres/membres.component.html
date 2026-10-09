@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="groupe">
+        <app-aside-bar></app-aside-bar>
+    </div>
+    <body>
+      <div class="membres">
+        <div class="add-member" (click)="togglePopup()">
+          <li><img class="groupe-img" id="plus-image" src="assets/membres/plus.png" alt="plus-image"><p>Ajouter</p></li>
+        </div>
+        <div class="popup-overlay" *ngIf="showPopup">
+          <div class="popup-content">
+            <div class="popup-header">
+              <h3>Ajouter un membre</h3>
+              <span class="close-button" (click)="togglePopup()"><img class="groupe-img" id="croix-image" src="assets/membres/croix.png" alt="croix-image"></span>
+            </div>
+            <div class="popup-body">
+              <div class="left-section">
+                <div class="code-container">
+                  <p class="code-text">Code :</p>
+                  <img class="copy-img" src="assets/membres/copie.png" (click)="copyCode()" alt="copy-image">
+                </div>
+                <p class="code">{{code}}</p>
+              </div>
+              <div class="right-section">
+                <p>Mail :</p>
+                <input type="email" placeholder="Entrez un mail" [(ngModel)]="email" />
+                <div class="div-gauche">
+                  <button (click)="sendMail()">Envoyer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="table-container">
+          <table class="members-table">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Rôle</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let member of members">
+                <td>{{ member["name"] }}</td>
+                <td>{{ member["second_name"] }}</td>
+                <td>{{ member["role_name"] }}</td>
+                <td>
+                  <div class="actions">
+                    <span class="dots" (click)="togglePopupDot(member['id'])"><img class="groupe-img" src="assets/membres/option.png" alt="option-image"></span>
+                    <div class="popup" *ngIf="activePopupId === member['id']">
+                      <ul>
+                        <li (click)="deleteMember(member['id'])"><img class="groupe-img" src="assets/membres/supprimer.png" alt="supprimer-image">Supprimer</li>
+                      </ul>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+</div>

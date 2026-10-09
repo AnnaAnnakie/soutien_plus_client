@@ -1,0 +1,725 @@
+.container {
+  display: flex;
+  margin: 0px;
+  max-width: 100%;
+  padding: 0px;
+}
+
+.groupe {
+  border-radius: 0px;
+  width: 25%;
+  height: 900px;
+  overflow-y: auto;
+}
+
+body {
+  padding: 20px;
+  background-color: #f9f9f9;
+  width: 100%;
+}
+
+.roles {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 900px;
+
+
+  width: 75%;
+}
+
+.roles-container {
+  height: calc(100% - 60px);
+  width: calc(100% - 60px);
+  margin: 30px;
+  flex-shrink: 1;
+
+  border-radius: 25px;
+  box-sizing: border-box;
+}
+
+.roles-container {
+  display: flex;
+}
+
+.ajout-role,
+.ajout-personne {
+  flex: 1; /* Chaque div prendra une part égale de l'espace disponible */
+  height: 100%; /* Assure que chaque div prend toute la hauteur du conteneur */
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.add-personne:hover,
+.ajout-personne li:hover {
+  background-color: #ffc3ae;
+  cursor: pointer;
+}
+
+.ajout-role{
+  overflow: auto;
+
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.ajout-role li:hover{
+  background-color: #dcdcdc;
+  cursor: pointer;
+  .add-role{
+    background-color: #dcdcdc;
+    cursor: pointer;
+  }
+
+}
+
+.add-role{
+  width: 300px;
+  height: 100px;
+
+}
+
+.add-role:hover{
+  background-color: #dcdcdc;
+}
+
+.edit {
+  flex: 2;
+  height: 95%;
+  overflow-y: auto; /* Ajoute le défilement vertical si nécessaire */
+  padding-top: 20px;
+}
+
+
+.roles-container {
+  display: flex;
+  height: 85vh;
+}
+
+.list-edit-permission tr {
+  border-bottom: 1px solid #ddd; /* Ajoute une barre entre chaque ligne */
+}
+
+.list-edit-permission td {
+  padding: 10px; /* Ajoute de l'espace autour du contenu des cellules */
+}
+
+
+.roles-list, .users-list, .edit-role {
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.roles-list, .users-list {
+  width: 30%;
+  overflow-y: auto;
+}
+
+.edit-role {
+  width: 40%;
+  overflow-y: auto;
+
+}
+
+.add-role {
+
+  border: none;
+  border-radius: 15px;
+  background-color: #83C5BE;
+
+}
+
+.add-role img{
+  height: 3vw;
+  width:auto;
+}
+
+.add-personne {
+  width: 300px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  background-color: #FFDDD2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* Retirer tout padding qui pourrait influencer la taille */
+}
+
+.add-personne img {
+  height: 60%;  /* Taille de l'image réduite */
+  width: auto;   /* Garde la proportion de l'image */
+}
+
+
+
+
+
+.list-role{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: left;
+  flex-wrap: wrap;
+  padding: 30px;
+}
+
+
+.ajout-role-selected ul{
+  gap: 7px;
+}
+
+.ajout-role-selected{
+
+  background-color: white;
+  border-right: solid black 2px;
+}
+
+.ajout-role-selected ul li{
+  border-radius: 5px;
+  background-color: #f4f4f4;
+
+}
+
+.list-role li{
+  width: 300px;
+
+  height:100px;
+  border: none;
+  border-radius: 15px;
+  background-color: #83C5BE;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6vw;
+  font-weight: bold;
+
+}
+
+
+
+.list-personne{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-left: 20px;
+
+}
+
+.container-list-personne{
+  width: 100%;
+}
+
+
+.list-personne li{
+  width: 300px;
+  height:50px;
+  border: none;
+  border-radius: 5px;
+  background-color: #FFDDD2;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6vw;
+}
+
+
+
+
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.form-create-role >div{
+  display: flex;
+
+
+  gap: 10px;
+}
+
+.form-create-role{
+  display: flex;
+  flex-direction: column;
+  gap: 20px
+}
+
+.popup h3 {
+  margin-top: 0;
+}
+
+.popup-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.popup-list li {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s;
+}
+
+.popup-list li:hover {
+  background-color: #e0f7fa;
+}
+
+.close-popup {
+  background-color: #ff5252;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.close-popup:hover {
+  background-color: #ff1744;
+}
+
+.edit h2{
+  text-align: center;
+}
+
+.list-edit-permission{
+  font-size: 1.3vw;
+  margin-left: 20px;
+  width: 100%;
+
+}
+
+
+.form-edit-role{
+  width: 96%;
+}
+
+.form-edit-role h1{
+  font-size: 2vw;
+  margin-left: 20px;
+}
+
+.form-edit-role li{
+  display: flex;
+  align-items: center;
+}
+
+.form-edit-role table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-edit-role table th, table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.form-edit-role table td:nth-child(1), table th:nth-child(1) {
+  width: 80%;
+}
+
+.form-edit-role table td:nth-child(2), table th:nth-child(2) {
+  width: 20%;
+}
+
+
+
+.form-edit-role table{
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+.slider.round::before {
+  border-radius: 50%;
+}
+
+.button-confirm-annul{
+  width: 100%;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-items: left;
+  gap: 10px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.buttons-create-role{
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-confirm-annul button{
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+
+}
+
+.annuler{
+  background-color: red;
+
+}
+
+.annuler:hover{
+  background-color: #dc0000;
+}
+
+.confirmer{
+  background-color: lightgreen ;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.confirmer:hover{
+  background-color: #70f370;
+}
+
+.disabled-switch {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.role-base{
+  color: red;
+  font-size: 1vw;
+  display: flex;
+  justify-content: center;
+}
+
+.selected-role{
+  height: 100%;
+}
+
+.nav-roles ul{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+
+}
+
+
+
+
+.ajout-role-selected{
+  width: 25%;
+
+}
+
+.ajout-role-selected ul li{
+  height: 60px;
+
+}
+
+.ajout-role-selected ul li:hover{
+  background-color: #e0effa;
+}
+
+.selected-role{
+  width: 75%;
+}
+
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  list-style: none;
+}
+
+.button-permission-non-selected{
+  font-size: xx-large;
+  border: none;
+  background: none;
+  border-bottom: solid gray 3px;
+
+}
+
+.button-personne-non-selected{
+  font-size: xx-large;
+
+  border: none;
+  background: none;
+  border-bottom: solid gray 3px;
+
+}
+
+
+.button-personne{
+  background-color: #dcdcdc;
+  border-bottom: solid #83C5BE 3px;
+
+}
+
+.button-permission{
+  background-color: #dcdcdc;
+  border-bottom: solid #83C5BE 3px;
+
+
+}
+
+.role-selected {
+  background-color: #e0effa !important;
+  border: solid #83C5BE 2px !important;
+
+  color: #2295E6FF !important;
+  font-weight: bold;
+}
+
+.disabled-button:hover{
+  background-color: lightgreen;
+
+}
+
+.create-role{
+  width: 100%;
+  padding: 30px;
+}
+
+.create-role input{
+  border-style: none;
+  border-bottom: solid black 1px;
+}
+
+.create-role input:focus{
+  outline:none;
+}
+
+.create-role form:nth-child(1){
+  width: 100%;
+}
+
+.create-role form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-role button{
+  width: 100px;
+}
+
+
+.btn-container{
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+
+.btn-container button{
+  width: 100px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: solid black 1px;
+  font-size: 1.2vw;
+}
+
+
+textarea {
+  outline: none;
+  min-width: 200px;
+  height: 35px;
+  padding: 8px;
+  font-size: 14px;
+  resize: none; /* Prevent manual resizing */
+  overflow: hidden; /* Hide scrollbars */
+  transition: width 0.2s, height 0.2s;
+  flex-grow: 0;
+}
+
+textarea.auto-expand {
+  width: auto;
+  max-width: 100%;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.form-create-role{
+  display: flex;
+  flex-direction: column;
+  text-wrap: nowrap;
+}
+
+/* Style de base pour le header du groupe (clicable) */
+.group-header {
+  cursor: pointer;
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+/* Cacher les permissions au départ */
+.group-permissions {
+  display: none;
+  padding-left: 20px;
+}
+
+/* Style des lignes de permission */
+.permission-row {
+  padding: 8px;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 14px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px; /* Taille augmentée du switch */
+  height: 30px; /* Taille augmentée du switch */
+  margin-left: 10px; /* Espace entre le texte et le switch */
+
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider::before {
+  transform: translateX(28px);
+}
+
+/* Cacher le checkbox réel */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+
+
+.supprimer {
+  position: absolute !important ;
+  top: 5px !important;
+  left: calc(100% - 30px) !important;
+  background-color: #ff8080;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 10;
+}
+
+.supprimer:hover {
+  background-color: #ff0000;
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.arrow img{
+  width: 25px;
+}
+
+.arrow-up {
+  transform: rotate(-90deg);
+}
+
+.arrow-down {
+  transform: rotate(0deg);
+}
+
+

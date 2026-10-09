@@ -1,0 +1,195 @@
+$background-color: #EDF6F9;
+$white-color: #fff;
+$primary-color: #007BFF;
+$button-color: #006D77;
+$button-hover-color: #E29578;
+$box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+$border-radius: 15px;
+
+.page {
+  background-color: $background-color;
+  font-family: 'Inter', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  background-color: $white-color;
+  width: 60%;
+  max-width: 1000px;
+  min-width: 400px;
+  height: auto;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: 20px;
+  box-sizing: border-box;
+
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 20px;
+    border-radius: 10px;
+
+    img {
+      width: 5vw;
+      height: auto;
+      margin-bottom: 5px;
+      background-color: #006D77;
+      border-radius: 10%;
+    }
+  }
+
+  h2{
+    font-size: 2.5vw;
+  }
+
+  h3{
+    font-size: 1.5vw;
+  }
+
+  .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    position: relative;
+
+    input {
+      &:not([type="checkbox"]) {
+        margin-bottom: 15px;
+        width: 100%;
+      }
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    a {
+      color: $primary-color;
+      text-decoration: underline;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: $button-color;
+      color: $white-color;
+      border: none;
+      cursor: pointer;
+      align-self: flex-end;
+      border-radius: 30px;
+
+      &:hover {
+        background-color: $button-hover-color;
+      }
+
+      &:disabled {
+        background-color: #ccc;
+        color: #666;
+        cursor: not-allowed;
+
+        &:hover {
+          background-color: #ccc;
+        }
+      }
+    }
+  }
+}
+
+.bouton {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.condition {
+  display: flex;
+  align-items: center;
+
+  input {
+    margin: 0.4rem;
+    width: 16px;
+    height: 16px;
+  }
+
+  label {
+    font-size: 14px;
+    color: #333;
+
+    a {
+      color: #007BFF;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+#inscription {
+  vertical-align: middle;
+}
+
+.lien {
+  margin-bottom: 15px;
+}
+
+button {
+  border-radius: 30px;
+}
+
+@media (max-width: 800px) {
+  .container {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    padding: 20px;
+
+    .left {
+      align-items: center;
+      img{
+        width: 10vw;
+      }
+    }
+
+    h2{
+      font-size: 5vw;
+    }
+
+    h3{
+      font-size: 3vw;
+    }
+  }
+
+  .left {
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .right {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .left img {
+    max-width: 80%;
+    margin-bottom: 15px;
+  }
+}

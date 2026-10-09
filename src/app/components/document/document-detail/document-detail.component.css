@@ -1,0 +1,82 @@
+.container {
+    display: flex;
+    margin: 0px;
+    max-width: 100%;
+    padding: 0px;
+  }
+.groupe {
+    border-radius: 0px;
+    width: 25%;
+    height: 900px;
+    overflow-y: auto;
+  }
+
+/* Conteneur principal */
+.document-container {
+    position: relative;
+  padding: 20px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Titre du document */
+.document-container h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Informations du document */
+.document-container p {
+  font-size: 16px;
+  color: #555;
+  margin: 8px 0;
+}
+
+/* Propriétaire en gras */
+.document-container p:first-of-type {
+  font-weight: bold;
+  color: #222;
+}
+
+/* Composant d'affichage du PDF */
+app-display-pdf {
+  display: block;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+/* Bouton "Back" */
+.document-container button {
+    position: absolute;
+    top: 5px;
+    left: 20px;
+  margin-top: 20px;
+  background: #1a67a7;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.document-container button:hover {
+  background: #153769;
+  transform: scale(1.05);
+}

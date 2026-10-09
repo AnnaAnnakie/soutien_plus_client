@@ -1,0 +1,106 @@
+<div class="container">
+    <div class="groupe">
+        <app-aside-bar></app-aside-bar>
+    </div>
+    <body>
+      <div class="membres">
+        <div class="grid-lignes">
+            <div class="colonnes">
+                <div class="grid-infos">
+                    <div class="grid-infos" style="position: relative;">
+                        <img id="ppimg" [src]="imgpp" alt="Photo de profil">
+
+                        <!-- Petit carré blanc cliquable -->
+                        <img *ngIf="isEditable" id="carreblanc" src="assets/parametre/carregris.png" alt="Modifier" (click)="triggerFileInput()">
+
+                        <!-- Input file caché -->
+                        <input type="file" #fileInput accept="image/png, image/jpeg" (change)="onFileSelected($event)" hidden>
+                    </div>
+
+
+                </div>
+
+                <div class="grid-infos">
+                    <p class="senior_name">
+                        <input *ngIf="isEditable" [(ngModel)]="prenom_senior" />
+                        <span *ngIf="!isEditable">{{prenom_senior}} </span>
+                        <input *ngIf="isEditable" [(ngModel)]="nom_senior"/>
+                        <span *ngIf="!isEditable">{{nom_senior}}</span>
+                    </p>
+
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <p style="margin: 0;">Date de naissance:</p>
+                        <input *ngIf="isEditable" [(ngModel)]="ddn_senior" type="date" />
+                        <span *ngIf="!isEditable">{{ ddn_senior | date:'dd/MM/yyyy' }}</span>
+                    </div>
+
+                </div>
+
+                <div class="grid-infos">
+                    <div><p></p></div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <p style="margin: 0;">Email:</p>
+                        <input *ngIf="isEditable" [(ngModel)]="email_senior" />
+                        <span *ngIf="!isEditable">{{ email_senior }}</span>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <p style="margin: 0;">Numéro:</p>
+                        <input *ngIf="isEditable" [(ngModel)]="numtel_senior" />
+                        <span *ngIf="!isEditable">{{ numtel_senior }}</span>
+                    </div>
+                </div>
+
+                <!-- Bouton Modifier -->
+                <div class="c12">
+                    <button (click)="toggleEdit()" id="modifier">
+                        {{ isEditable ? 'Sauvegarder' : 'Modifier' }}
+                    </button>
+                </div>
+            </div>
+
+            <div>
+                <hr>
+            </div>
+
+            <div class="colonnes">
+                <p id="tuteur">Tuteur :</p>
+                <div class="grid-tuteur">
+
+                    <p id="name_tut">
+                        <span >Benjamin KALIC</span>
+                    </p>
+
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <p style="margin: 0;">Email:</p>
+                        <input *ngIf="isEditable" [(ngModel)]="email_tut" />
+                        <span>benjaminkalic131&#64;mail.com"</span>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <p style="margin: 0;">Numéro:</p>
+                      <span>061111111</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div>
+                <hr>
+            </div>
+        </div>
+
+        <!--Commentaires :-->
+        <div class="c22">
+            <p>Commentaires :</p>
+            <input *ngIf="isEditable" [(ngModel)]="comments" />
+            <span *ngIf="!isEditable">{{ comments }}</span>
+        </div>
+
+        <!--Bouton santé :-->
+        <div class="c31">
+            <button id="carnetsante">Voir les informations du carnet de santé</button>
+        </div>
+      </div>
+    </body>
+</div>

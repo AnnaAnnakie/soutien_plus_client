@@ -1,0 +1,63 @@
+<body>
+  <div class="main">
+    <div class="recherche-tri">
+      <div class="tri">
+        <div class="custom-select" (click)="toggleDropdown()">
+          <span class="selected-option">{{ selectedOption }}</span>
+          <span class="arrow">{{ isDropdownOpen ? '▲' : '▼' }}</span>
+        </div>
+
+        <ul class="dropdown" *ngIf="isDropdownOpen">
+          <li
+            *ngFor="let option of options"
+            class="dropdown-item"
+            (click)="selectOption(option)">
+            {{ option }}
+          </li>
+        </ul>
+      </div>
+      <div class="popup-overlay" *ngIf="showPopup">
+        <div class="popup-content">
+          <div class="popup-header">
+            <h3>Ajouter un membre</h3>
+            <span class="close-button" (click)="togglePopup()"><img class="groupe-img" id="croix-image" src="assets/membres/croix.png" alt="croix-image"></span>
+          </div>
+          <div class="popup-body">
+            <a class="left-section" href="/new-group">
+              <p id="create_grp">Crée un groupe</p>
+            </a>
+            <div class="right-section">
+              <p>Rejoindre un groupe :</p>
+              <input class="input-code" type="number" placeholder="Entrez le code" [(ngModel)]="code" />
+              <div class="div-gauche">
+                <button (click)="onSubmit()">Envoyer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form (submit)="$event.preventDefault()" class="recherche-form">
+        <button type="submit" class="recherche-btn">
+          <img src="assets/groupes/btn_recherche.png" alt="Rechercher" class="recherche-icon">
+        </button>
+        <input type="text" name="search" placeholder="Rechercher un groupe..." class="recherche-input" [(ngModel)]="searchQuery" (input)="filterGroupes()"/>
+      </form>
+    </div>
+
+    <div class="groupes">
+      <div *ngFor="let groupe of filteredGroupes" class="groupe">
+        <a (click)="this.goToGroupe(groupe['id'])" class="groupe-link">
+          <img src="assets/groupes/img_default.png" alt="" class="groupe-img">
+          <span class="groupe-nom">{{ groupe["roomName"] }}</span>
+        </a>
+      </div>
+
+
+    <div class="add-groupe">
+      <a class="add-groupe-link" (click)="togglePopup()">
+        <img src="assets/groupes/croix_ajout.png" alt="Ajouter un groupe" class="add-groupe-img">
+      </a>
+    </div>
+  </div>
+  </div>
+</body>

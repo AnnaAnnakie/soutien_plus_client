@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="groupe">
+    <app-aside-bar></app-aside-bar>
+  </div>
+  <body>
+  <div class="calendrier">
+
+    <div class="calendar-container">
+      <div class="top-calendar-container">
+        <div class="header-calendrier">
+          <h1>Calendrier</h1>
+
+          <div class="switch-container">
+
+            <div>
+              activer / désactiver la modification des évènements:
+            </div>
+            <label class="switch">
+
+              <input type="checkbox" id="editableToggle" (change)="toggleEditable($event)" />
+              <span class="slider"></span>
+            </label>
+
+          </div>
+
+
+
+
+        </div>
+        <div class="modal" *ngIf="showAddEventModal">
+          <div class="modal-content">
+            <h2>Ajouter un événement</h2>
+            <form (submit)="addEvent(); $event.preventDefault()">
+              <label>
+                Event Title:
+                <input type="text" [(ngModel)]="eventTitle" name="eventTitle" required />
+              </label>
+              <label>
+                Event Start (Date and Time):
+                <input type="datetime-local" [(ngModel)]="eventStart" name="eventStart" required />
+              </label>
+              <label>
+                Event End (Date and Time):
+                <input type="datetime-local" [(ngModel)]="eventEnd" name="eventEnd" required />
+              </label>
+              <div class="type-rdv">
+                <label for="appointmentType">Type de rendez-vous: </label>
+                <select id="appointmentType" name="appointmentType" [(ngModel)]="selectedAppointmentType">
+                  <option *ngFor="let appointment of appointmentTypes" [value]="appointment.type">
+                    {{ appointment.type }}
+                  </option>
+                </select>
+              </div>
+
+
+              <div class="modal-buttons">
+                <button type="submit" [disabled]="!eventTitle || !isDateTimeValid(eventStart, eventEnd)">
+                  Ajouter
+                </button>
+                <button type="button" (click)="closeAddEventModal()">Annuler</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+
+      <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+      <div class="modal" *ngIf="selectedEvent">
+  <div class="modal-content">
+    <div class="title">Modifier un événement         <button type="button" (click)="deleteEvent()" >Supprimer</button>
+    </div>
+
+    <form (submit)="updateEvent(); $event.preventDefault()">
+      <label>
+        Event Title:
+        <input type="text" [(ngModel)]="selectedEvent.title" name="editEventTitle" required />
+      </label>
+      <label>
+        Start Date and Time:
+        <input type="datetime-local" [(ngModel)]="selectedEventStart" name="editEventStart" required />
+      </label>
+      <label>
+        End Date and Time:
+        <input type="datetime-local" [(ngModel)]="selectedEventEnd" name="editEventEnd" required />
+      </label>
+      <div class="type-rdv">
+        <label for="appointmentType">Type de rendez-vous: </label>
+        <select id="appointmentTypeEdit" name="appointmentType" [(ngModel)]="selectedAppointmentType">
+          <option *ngFor="let appointment of appointmentTypes" [value]="appointment.type">
+            {{ appointment.type }}
+          </option>
+        </select>
+      </div>
+
+      <div class="modal-buttons">
+        <button type="submit">Enregistrer</button>
+        <button type="button" (click)="cancelEdit()" >Annuler</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+    </div>
+  </div>
+  </body>
+</div>
+

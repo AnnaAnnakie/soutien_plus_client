@@ -1,0 +1,22 @@
+<div class="container">
+
+  <div class="groupe">
+    <app-aside-bar></app-aside-bar>
+  </div>
+
+  <div *ngIf="document" class="document-container">
+    <div id="inline"><h2>{{ document.getName() }}</h2>
+      <button (click)="goBack()">RETOUR</button>
+    </div>
+    <!--<p>Auteur: {{currentUser?.getFullName()}}</p>
+    <p>Type de document : {{document.getType()}}</p>
+    <p>Description : {{document.getDescription()}}</p>
+    <p>Dernière modification: {{document.getDateCreation()}}</p>-->
+
+    <app-display-pdf
+      [document]="document"
+      [displayIn]="true">
+    </app-display-pdf>
+
+  </div>
+</div>

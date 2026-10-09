@@ -1,0 +1,66 @@
+<body>
+  <div class="groupe">
+    <div class="group-header">
+      <h1>{{nom_groupe}}</h1>
+    </div>
+
+    <div class="sections">
+      <a *ngIf="hasPermissionVisual('profile_access')" routerLink="/groupe/{{groupeId}}/profil-s" >
+        <div class="section orange">
+          <img class="groupe-img" src="assets/groupe/profil.png" alt="profile">
+          <span class="Profil">INFORMATIONS</span>
+        </div>
+      </a>
+
+      <a *ngIf="hasPermissionVisual('task_view')" routerLink="/groupe/{{groupeId}}/kanban">
+        <div class="section beige">
+          <img class="groupe-img" src="assets/groupe/taches.png" alt="tache">
+          <span class="Taches">TACHES</span>
+        </div>
+      </a>
+
+      <a *ngIf="hasPermissionVisual('calendar_access')" routerLink="/groupe/{{groupeId}}/calendrier">
+        <div class="section bleu">
+          <img class="groupe-img" src="assets/groupe/agenda.png" alt="agenda">
+          <span class="Agenda">AGENDA</span>
+        </div>
+      </a>
+
+      <a *ngIf="hasPermissionVisual('messagerie_access')" > <!-- routerLink="/groupe/{{groupeId}}/messagerie"-->
+        <div class="section disabled">
+          <img class="groupe-img" src="assets/groupe/messages.png" alt="message">
+          <span class="Messages">MESSAGES</span>
+        </div>
+      </a>
+
+
+      <a *ngIf="hasPermissionVisual('document_access')" routerLink="/groupe/{{groupeId}}/documents">
+        <div class="section bleu">
+          <img class="groupe-img" src="assets/groupe/documents.png" alt="document">
+          <span class="Documents">DOCUMENTS</span>
+        </div>
+      </a>
+
+      <a *ngIf="hasPermissionVisual('member_access')" routerLink="/groupe/{{groupeId}}/membres">
+        <div class="section orange">
+          <img class="groupe-img" src="assets/groupe/membres.png" alt="membres">
+          <span class="Membres">MEMBRES</span>
+        </div>
+      </a>
+
+      <a *ngIf="hasPermissionVisual('contact_access')" routerLink="/groupe/{{groupeId}}/contacts">
+          <div class="section bleu">
+            <img class="groupe-img" src="assets/groupe/contacts.png" alt="contact">
+            <span class="Contact">CONTACT</span>
+          </div>
+      </a>
+
+      <a *ngIf="hasPermissionVisual('role_access')" routerLink="/groupe/{{groupeId}}/roles">
+        <div class="section orange">
+          <img class="groupe-img" src="assets/groupe/roles.png" alt="roles">
+            <span class="Roles">ROLES</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>

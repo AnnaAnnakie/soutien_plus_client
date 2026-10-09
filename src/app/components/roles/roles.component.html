@@ -1,0 +1,189 @@
+<div class="container">
+  <div class="groupe">
+    <app-aside-bar></app-aside-bar>
+  </div>
+
+  <div class="roles">
+    <div class="roles-container">
+      <!-- Liste des rôles -->
+      <div class="ajout-role" [ngClass]="{'ajout-role-selected': selectedRole}">
+
+
+        <ul class="list-role">
+          <div class="btn-container">
+            <button class="btn-retour" *ngIf="selectedRole" (click)="disableSelectRole()">
+              retour
+            </button>
+          </div>
+
+
+          <li *ngFor="let role of roles"
+              (click)="selectRole(role.id)"
+              [ngClass]="{'role-selected': selectedRole?.id === role.id}">
+            {{ role.name }}
+            <button *ngIf="!role.base && !selectedRole" class="supprimer" (click)="supprimerGroup(); $event.stopPropagation()">
+              X
+            </button>
+          </li>
+          <div *ngIf="!selectedRole">
+            <button  class="add-role" (click)="toggleCreateRole()">
+              <img src="assets/roles/plus.png" alt="Ajouter un rôle">
+            </button>
+          </div>
+        </ul>
+
+
+
+      </div>
+
+
+
+      <div *ngIf="selectedRole" class="selected-role">
+        <nav class="nav-roles">
+          <ul>
+            <li> <button class="button-permission-non-selected" [ngClass]="{'button-permission': selectedPermission}" (click)="switchToPermission()">Permissions</button> </li>
+            <li> <button class="button-personne-non-selected" [ngClass]="{'button-personne': selectedPersonnes}" (click)="switchToPersonnes()"> Gérer les membres </button> </li>
+          </ul>
+        </nav>
+
+
+      <!-- Liste des personnes ayant le rôle sélectionné -->
+      <div class="ajout-personne" *ngIf="selectedRole && selectedPersonnes" >
+
+        <h2 *ngIf="!selectedRole">Sélectionnez un rôle</h2>
+        <div *ngIf="selectedRole" class="container-list-personne">
+          <ul class="list-personne">
+            <li *ngFor="let person of membresOfRoleSelected" class="role-element">
+              {{ person.name }}
+              <span *ngIf="!selectedRole">-</span>
+            </li>
+            <li>
+              <button *ngIf="selectedRole" class="add-personne" (click)="togglePopup()">
+                <img src="assets/roles/plus.png" alt="">
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Modification du rôle sélectionné -->
+      <div class="edit" *ngIf="selectedRole && selectedPermission">
+
+        <h2 *ngIf="selectedRole">Modifier le rôle {{ selectedRole.name }}</h2>
+        <h3 *ngIf="selectedRole && selectedRole.base" class="role-base"> Le rôle {{selectedRole.name}} est un rôle de base, il n'est pas modifiable </h3>
+        <form #permForm="ngForm" (ngSubmit)="onSubmit(permForm)" *ngIf="selectedRole">
+          <div class="form-edit-role">
+            <h1>Permissions :</h1>
+            <table class="list-edit-permission">
+              <thead>
+              <tr>
+                <th>Permission</th>
+                <th>Activer/Désactiver</th>
+              </tr>
+              </thead>
+              <tbody>
+              <!-- Permissions groupées par préfixe -->
+              <ng-container *ngFor="let group of Object.keys(groupPermissionsByPrefix())">
+                <!-- Group Header (cliquable pour ouvrir/fermer) -->
+                <tr class="group-header" (click)="toggleGroup(group)" id="group-{{ group }}">
+                  <td colspan="3">
+                    <span class="arrow" [ngClass]="{'arrow-down': isGroupVisible(group), 'arrow-up': !isGroupVisible(group)}"> <img
+                      src="../../../assets/roles/arrow.png" alt="arrow"></span>
+                    <strong>{{ group | titlecase }}</strong>
+                  </td>
+                </tr>
+
+
+                <!-- Permissions du groupe, cachées par défaut -->
+                <ng-container *ngIf="isGroupVisible(group)">
+                  <ng-container *ngFor="let permission of groupPermissionsByPrefix()[group]">
+                    <tr class="tableau">
+                      <td>{{ permission.description }}</td>
+                      <td>
+                        <label class="switch" [ngClass]="{'disabled-switch': selectedRole.base}">
+                          <input
+                            type="checkbox"
+                            [(ngModel)]="permission.isChecked"
+                            name="{{ permission.id }}"
+                            [disabled]="selectedRole.base">
+                          <span class="slider round"></span>
+                        </label>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+              </tbody>
+            </table>
+            <div class="button-confirm-annul">
+              <button class="confirmer" type="submit" [disabled]="selectedRole.base" [ngClass]="{'disabled-button': selectedRole.base}">Confirmer</button>
+              <div> </div>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+    <!-- Popup -->
+    <div class="popup-overlay" *ngIf="isPopupVisible">
+      <div class="popup">
+        <h3>Ajouter une personne au rôle {{ selectedRole?.name }}</h3>
+        <ul class="popup-list">
+          <li *ngFor="let person of usersAvailable" (click)="addRoleToPerson(person.id)">
+            {{ person.name }}
+          </li>
+        </ul>
+        <button class="close-popup" (click)="togglePopup()">Fermer</button>
+      </div>
+    </div>
+
+    <div class="popup-overlay" *ngIf="isCreatingRole">
+      <div class="popup">
+      <div class="create-role" >
+        <form #roleForm="ngForm">
+            <div class="form-create-role">
+            <div>
+              <label for="roleName">Nom du rôle :</label>
+              <input id="roleName" type="text" required name="name" [(ngModel)]="newRole.name">
+            </div>
+
+            <div>
+              <label for="roleDescription">Description :</label>
+              <textarea name="description" id="roleDescription" cols="30" rows="10" [(ngModel)]="newRole.description"> </textarea>
+
+            </div>
+            <div class="buttons-create-role">
+              <button class="confirmer" type="submit" (click)="createRole()" [disabled]="!roleForm.valid">Créer</button>
+              <button class="close-popup" type="submit" (click)="cancelCreateRole()">Annuler</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="popup-overlay" *ngIf="isPopupSupprimerVisible">
+      <div class="popup">
+        <h3>Voulez vous vraiment supprimer ce rôle ?</h3>
+
+        <div>
+          <button class="close-popup" (click)="togglePopupSupprimer()">Annuler</button>
+          <button class="confirmer" (click)="supprimerGroup()">Confirmer</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

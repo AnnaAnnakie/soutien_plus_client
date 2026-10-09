@@ -1,0 +1,176 @@
+<div class="container">
+  <div class="groupe">
+      <app-aside-bar></app-aside-bar>
+  </div>
+  <body>
+    <div class="kanban">
+      <div class="root">
+        <div class="board">
+          <div class="board-wrapper">
+            <div class="board-columns">
+              <div cdkDropList cdkDropListOrientation="horizontal" class="board-columns" (cdkDropListDropped)="dropGrid($event)">
+                <div class="board-column" *ngFor="let colonne of colonnes; let i = index" cdkDrag>
+                  <div class="column-title" cdkDragHandle>
+                    <div *ngIf="editingColumnId !== colonne.id" (click)="startEditing(colonne.id)" (keydown)="startEditing(colonne.id)">
+                      {{ colonne.name }} {{ colonne.taches.length }}
+                    </div>
+                  
+                    <!-- Mode édition -->
+                    <input *ngIf="editingColumnId === colonne.id"
+                           [(ngModel)]="colonne.name"
+                           (blur)="stopEditing(colonne)"
+                           (keyup.enter)="stopEditing(colonne)"
+                           class="edit-input">
+                    <div class="actions">
+                      <span class="dots" (click)="togglePopupDot(colonne.id)" (keydown)="togglePopupDot(colonne.id)"><img class="groupe-img" src="assets/kanban/option.png" alt="option"></span>
+                      <div class="popup" *ngIf="activePopupId === colonne.id">
+                        <ul>
+                          <li (click)="deleteColumn(colonne.id)" (keydown)="deleteColumn(colonne.id)">Supprimer</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tasks-container"
+                      id="{{colonne.id}}"
+                      [cdkDropListConnectedTo]="columnIds"
+                      cdkDropList
+                      [cdkDropListData]="colonne.taches"
+                      (cdkDropListDropped)="drop($event)">
+                    <div class="task" *ngFor="let task of colonne.taches" cdkDrag [cdkDragDisabled]="showTaskPopup">
+                      <div class="task2" (click)="openTaskPopup(task)" (keydown)="openTaskPopup(task)">
+                        <div class="task-title">
+                          {{ task.titre }}
+                          <div class="actions">
+                            <span class="dots"><img class="groupe-img" src="assets/kanban/modifier.png" alt="option"></span>
+                          </div>
+                        </div>
+                        <div class="task-user">
+                          {{task.date}}
+                          <img class="img-user" src="assets/kanban/img_profil.png" alt="default">
+                        </div>
+                      </div>
+                      <div [ngClass]="{'overlay-active': showTaskPopup}">
+                        <div class="task-popup" *ngIf="showTaskPopup">
+                          <div class="popup-content">
+                            <div class="title-task-popup">
+                              <h2>Modifier la tâche</h2>
+                              <button (click)="annulerTask()">Annuler</button>
+                            </div>
+                            <label>
+                              Titre :
+                              <input type="text" [(ngModel)]="activeTask.titre" />
+                            </label>
+                            <label>
+                              Description :
+                              <textarea [(ngModel)]="activeTask.description"></textarea>
+                            </label>
+                            <label>
+                              Responsable :
+                              <select [(ngModel)]="activeTask.responsableId">
+                                <option *ngFor="let member of members" [value]="member">{{ member["name"] }}</option>
+                              </select>
+                            </label>                            
+                            <label>
+                              Type de tâche :
+                              <select [(ngModel)]="activeTask.type">
+                                <option value="medical">Médical</option>
+                                <option value="familial">Familial</option>
+                                <option value="professionnel">Professionnel</option>
+                                <option value="autre">Autre</option>
+                              </select>
+                            </label>
+                            <label>
+                              Date d'échéance:
+                              <input type="date" [(ngModel)]="activeTask.date" />
+                            </label>
+                            <label id="addCalendar">
+                              Ajouter au calendrier :
+                              <input type="checkbox" [(ngModel)]="activeTask.isInCalendrier" />
+                            </label>
+                            
+                            <label>
+                              Liée un documents :
+                              <select [(ngModel)]="activeTask.idDocument">
+                                <option *ngFor="let document of documents" [value]="document">{{ document["name"] }}</option>
+                              </select>
+                            </label>
+                            
+                            <div class="popup-actions">
+                              <button (click)="saveTask()">Enregistrer</button>
+                              <button id="btn_supprimer" (click)="deleteTask(task.id)">Supprimer</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="div-add-task">
+                      <button class="add-task" (click)="OuverturePopupCreate(colonne)">
+                        <img src="assets/kanban/croix_ajout.png" alt="">
+                        <p>Créer une tache</p>
+                      </button>
+                    </div>                   
+                  </div>
+                  <div [ngClass]="{'overlay-active': showTaskPopupCreate}">
+                    <div class="task-popup" *ngIf="showTaskPopupCreate">
+                      <div class="popup-content">
+                        <div class="title-task-popup">
+                          <h2>Ajouter une tâche</h2>
+                          <button (click)="ClosePopupCreate()">Annuler</button>
+                        </div>
+                        <label>
+                          Titre :
+                          <input type="text" [(ngModel)]="taskForm.title" (input)="titleError = false"/>
+                          <span *ngIf="titleError" class="error-message">Le titre est obligatoire.</span>
+                        </label>
+                        <label>
+                          Description :
+                          <textarea [(ngModel)]="taskForm.description"></textarea>
+                        </label>
+                        <label>
+                          Responsable :
+                          <select [(ngModel)]="taskForm.responsible">
+                            <option *ngFor="let member of members" [value]="member">{{ member["name"] }}</option>
+                          </select>
+                        </label>                            
+                        <label>
+                          Type de tâche :
+                          <select [(ngModel)]="taskForm.type">
+                            <option value="medical">Médical</option>
+                            <option value="familial">Familial</option>
+                            <option value="professionnel">Professionnel</option>
+                            <option value="autre">Autre</option>
+                          </select>
+                        </label>
+                        <label>
+                          Date d'échéance:
+                          <input type="date" [(ngModel)]="taskForm.dueDate"/>
+                        </label>
+                        <label id="addCalendar">
+                          Ajouter au calendrier :
+                          <input type="checkbox" [(ngModel)]="taskForm.addToCalendar"/>
+                        </label>
+                        <label>
+                          Liée un document :
+                          <select [(ngModel)]="taskForm.document">
+                            <option *ngFor="let document of documents" [value]="document">{{ document["name"] }}</option>
+                          </select>
+                        </label>
+                        <div class="popup-actions">
+                          <button (click)="addTask(colonne)">Ajouter</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                         
+                </div>
+                <button class="add-board" (click)="addColumn()">
+                  <img src="assets/kanban/croix_ajout.png" alt="">
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>         
+  </body>
+</div>

@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="groupe">
+    <app-aside-bar></app-aside-bar>
+  </div>
+  <div class="contacts">
+    <!-- Titre et bouton d'ajout -->
+    <div class="header">
+      <h1>CONTACTS</h1>
+      <button (click)="togglePopup()">Add +</button>
+    </div>
+
+    <!-- Tableau des contacts -->
+    <div class="liste">
+      <div class="contact-row">
+        <div *ngFor="let contact of contacts;">
+          <div class="contact">
+            <img src="assets/groupe/contacts.png" alt="">
+            <span>{{ contact.prenom }}<br>{{ contact.nom }} <br> {{contact.metier}} <br> {{contact.email}} <br> {{contact.telephone}} </span>
+          </div>
+
+          <div class="button-group">
+            <button class="delete-button" (click)="deleteContact(contact)">
+              Supprimer
+            </button>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pop-up d'ajout de contact -->
+<div *ngIf="showPopup" class="popup-overlay">
+  <div class="popup-content">
+    <h3>Ajouter un contact</h3>
+
+    <input type="text" [(ngModel)]="newContact.nom" placeholder="Nom">
+    <input type="text" [(ngModel)]="newContact.prenom" placeholder="Prenom">
+    <input type="text" [(ngModel)]="newContact.metier" placeholder="Métier">
+    <input type="text" [(ngModel)]="newContact.email" placeholder="email">
+    <input type="text" [(ngModel)]="newContact.telephone" placeholder="Numéro de téléphone">
+
+    <div class="popup-buttons">
+      <button class="save" (click)="confirmAddContact()">Ajouter</button>
+      <button class="cancel" (click)="togglePopup()">Annuler</button>
+    </div>
+  </div>
+</div>

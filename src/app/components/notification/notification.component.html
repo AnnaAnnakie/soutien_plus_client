@@ -1,0 +1,22 @@
+<div class="background" (click)="onBackgroundClick($event)">
+  <div class="notification-container-wrapper" (click)="$event.stopPropagation()">
+    <button class="close-button" (click)="onCloseMenu()">&times;</button> 
+    <h2>Notifications</h2>
+    <img *ngIf="isLoading" src="../../../assets/document/loading-gif.gif" alt="loading">
+    <p *ngIf="notificationsAssignement.length === 0 && !isLoading" class="no-notification">
+      Aucune notification pour le moment.
+    </p>
+    <div *ngFor="let notification of notificationsAssignement" class="notification-container">
+      <div class="notification" (click)="onSelect(notification.getRoomId(), notification.getDocumentId())">
+        <p>{{ notification.getCreateAt() }}</p>
+        <p>
+          <strong class="author-name">{{ notification.getAuthorName() }}</strong> vous demande de réaliser :
+          <strong class="action">{{ notification.getAction() }}</strong> sur le document
+          <strong class="document-name">{{ notification.getDocumentName() }}</strong> du groupe
+          <strong class="group-name">{{ notification.getGroupName() }}</strong> avant le 
+          <strong>{{ notification.getDateLimit() }}</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

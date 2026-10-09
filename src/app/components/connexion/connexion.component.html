@@ -1,0 +1,22 @@
+<div class="page">
+    <div class="container">
+        <div class="left">
+            <img src="assets/navbar/logo.png" alt="logo">
+            <h2>Connexion</h2>
+            <h3>Accéder à Soutien+</h3>
+        </div>
+        <div class="right">
+          <form class="form-connexion" [formGroup]="connexionForm" (ngSubmit)="onSubmit()">
+            <p *ngIf="error_message.length != 0">{{error_message}}</p>
+            <input type="email" id="email" formControlName="email" placeholder="Adresse e-mail" required>
+            <a class="lien" href="">Adresse e-mail oubliée ?</a>
+            <input type="password" id="password" formControlName="password" placeholder="Mot de passe" required>
+            <a class="lien" href="">Mot de passe oublié ?</a>
+            <div class="bouton">
+                <a id="inscription" (click)="this.goToRegister()">Créer un compte</a>
+                <button type="submit" [disabled]="!isFieldsValid()">Connexion</button>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>

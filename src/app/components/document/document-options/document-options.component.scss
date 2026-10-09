@@ -1,0 +1,28 @@
+menu {
+  position: absolute;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 0;
+}
+
+menu ul {
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  padding: 0.5em;
+}
+
+menu li:hover {
+  background-color: #eee;
+  transition: all 0.6s;
+  cursor: pointer;
+}
+
+.rename-modal {
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: rgb(204, 204, 204);
+  width: fit-content;
+}

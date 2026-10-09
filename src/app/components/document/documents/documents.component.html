@@ -1,0 +1,52 @@
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+
+<div class="container">
+  <div class="groupe">
+    <app-aside-bar></app-aside-bar>
+  </div>
+
+  <body>
+  <div id="doc_list">
+
+    <h3>{{ title }} {{ groupe?.getName() }}</h3>
+    <button class="button" (click)="onClickAdd()">Ajouter un document</button>
+
+    <table>
+      <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Propriétaire</th>
+        <th scope="col">Date création</th>
+        <th scope="col">Dernière modification</th>
+        <th scope="col">Type</th>
+        <th scope="col" *ngIf="idDoc">Version</th>
+        <th scope="col">options</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let doc of documents">
+      <tr [ngClass]="{'active-doc': isOpen[doc.getId()]}" (click)="onSelect(doc)">
+        <td>{{ doc.getName() }}</td>
+        <td>{{ getUserById(doc.getAuthor())?.getFullName() }}</td>  <!-- Utilise le cache -->
+        <td>{{ doc.getDateCreation() }}</td>
+        <td>{{ doc.getDateModif() }}</td>
+        <td>{{ doc.getType() }}</td>
+        <td *ngIf="idDoc">{{ doc.getVersion() }}</td>
+        <td (click)="openMenu($event, doc)"><span class="options"></span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!--
+Envoi les information pour ouvrir le menu :
+-selectedDoc= Document sélectionné
+-menuPosition= Position de la souris lors du clique  (afin d'afficher le menu à côté de la souris)
++ Envoie de la méthode closeMenu() afin que document-options puisse envoyer un signal pour la fermeture du menu
+-->
+  <app-document-options *ngIf="isOpen && selectedDoc" [selectedDoc]="selectedDoc" [menuPosition]="menuPosition"
+                        (closeMenu)="closeMenu()" (reload)="reload()"></app-document-options>
+
+  </body>
+</div>

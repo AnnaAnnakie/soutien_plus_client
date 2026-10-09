@@ -1,0 +1,7 @@
+export enum DocumentEnumType {
+    DEFAULT='DEFAULT',
+    IMPORTANT = 'IMPORTANT',
+    CERTIFICAT = 'CERTIFICAT',
+    ORDONNANCE = 'ORDONNANCE',
+    FACTURE = 'FACTURE'
+  }

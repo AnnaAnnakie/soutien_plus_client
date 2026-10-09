@@ -1,0 +1,29 @@
+<nav>
+  <div class="menu-container">
+    <div  class="logo">
+      <a routerLink="/accueil">
+        <img src="assets/navbar/logo.png" alt="Logo de l'entreprise">
+      </a>
+    </div>
+    <div class="menu-links">
+      <a routerLink="/accueil">Accueil</a>
+      <a routerLink="/groupes">Groupes</a>
+    </div>
+  </div>
+  <div class="user-container">
+    <a (click)="onClickNotif()" class="notifications">
+      <span *ngIf="countNotif!=0" id="count_notif">{{countNotif}}</span>
+      <img src="assets/navbar/notification.png" alt="Notification">
+      <span>Notification</span>
+    </a>
+
+    <app-notification *ngIf="isNotifOpen" (closeNotif)="closeNotif()" >
+
+    </app-notification>
+
+    <a class="profil" href="/parametre">
+      <img src="assets/navbar/img_profil.png" alt="Profil utilisateur">
+      <span>Profil</span>
+    </a>
+  </div>
+</nav>
