@@ -1,25 +1,51 @@
 # SoutienPlusAngularClient
 
-Cette application a été réalisée avec Angular. Vous pouvez accéder à sa version déployée ici: http://82.66.239.16/
+This application was developed using Angular as part of a university project. This repository contains the client side (front-end) of the application, created by a group of 7 third-year Bachelor's students.
 
-## 🛠️ Installation et Configuration
+## 🔗 Related Repositories
 
-Pour récupérer ce projet en local, suivre les instructions ci-dessous:
+* **Back-End API:** [SoutienPlus Back-End Repository](https://github.com/AnnaAnnakie/soutien_plus_backend) 
 
-1. Cloner le dépôt:
-```
-git clone https://gricad-gitlab.univ-grenoble-alpes.fr/iut2-info-stud/2024-s5/sa-5-a/groupe1/soutien-plus-angular-client.git
-```
-2. Se placer dans le dossier:
-```
-cd soutien-plus-angular-client/
-```
-3. Installer les dépendances:
-```
-npm install
-```
-4. Lancer le projet:
-```
-npm run start
-```
-5. Ouvrir le navigateur à http://localhost:4200
+## 📋 Prerequisites
+
+Before running this project, ensure you have the following installed on your system:
+
+* **Node.js**: `v18.x` or `v20.x` (Recommended)
+* **npm**: `v9.x` or higher
+* **Angular CLI**: `v15.x` or higher *(or run via local `npm` scripts)*
+
+> **Tip to check your current versions:**  
+> Run `node -v` and `npm -v` in your terminal. You can also inspect the `"dependencies"` inside `package.json` to see the exact library versions used.
+
+## 🚀 Installation and Setup
+
+Follow the steps below to install and run the application locally:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/AnnaAnnakie/soutien_plus_client.git
+   ```
+
+2. **Navigate to the project directory:**
+   ```bash
+   cd soutien_plus_client
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server:**
+   ```bash
+   npm run start
+   ```
+
+5. **Open in your browser:**  
+   Navigate to [http://localhost:4200](http://localhost:4200)
+
+## 🛠️ Built With
+
+* [Angular](https://angular.io/) - Front-end framework
+* [TypeScript](https://www.typescriptlang.org/) - Primary programming language
+* [Node.js](https://nodejs.org/) & [npm](https://www.npmjs.com/) - Package management
